@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Fimweb.Models.Customer>
+@{
+    ViewBag.Title = "AllCustomers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AllCustomers</h2>
+
+
+@if (Model == null)
+{
+    <a>No customers found.</a>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@Html.ActionLink(user.Name, "Details", "Customers", new { id = user.Id }, null)</td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
